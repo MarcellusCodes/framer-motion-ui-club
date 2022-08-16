@@ -1,8 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
+import Content from '../layouts/Content.astro';
 ---
 
 <Base title="Welcome to Framer Motion UI Club">
 	<Header />
+		<main>
+			<section>
+				<Content>
+					<div class="w-full h-auto bg-red-500 flex flex-col items-start">
+						<article></article>
+					</div>
+					<div />
+					<aside class="w-full h-[300px] bg-green-500"></aside>
+				</Content>
+			</section>
+		</main>
 </Base>
