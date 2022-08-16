@@ -5,7 +5,26 @@ import Content from '../layouts/Content.astro';
 ---
 
 <Base title="Welcome to Framer Motion UI Club">
-	<Header />
+	<Header>
+		<article>
+			<h1 class="font-primary text-6xl text-black font-bold text-clip overflow-hidden">
+				<a class="hover:underline decoration-black leading-1" href="/">how to control viewport animations using the margin prop</a>
+			</h1>
+			<div class="py-6" />
+			<div class="flex flex-row items-start justify-between">
+				<div class="flex flex-row items-start space-x-6">
+					<div class="w-[100px] h-[100px] bg-black rounded-tl-md rounded-br-md" />
+					<ul>
+						<li class="text-lg text-black font-medium">Marcel Pohl</li>
+						<li class="text-md font-secondary text-black font-light">Easy</li>
+						<div class="py-1" />
+						<li class="text-md font-secondary font-light">August 9, 2022</li>
+					</ul>
+				</div>
+				<li class="justify-self-center border group hover:bg-black bg-transparent border-black list-none rounded-md duration-300 inline-flex"> <a class="py-2 px-6 text-md text-black group-hover:text-grey group-hover:underline decoration-grey" href="/">InView</a></li>
+			</div>
+		</article>
+	</Header>
 		<main>
 			<section>
 				<Content>

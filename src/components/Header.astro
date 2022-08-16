@@ -1,10 +1,20 @@
 ---
 import Navbar from './Navbar.astro'
+import Content from '../layouts/Content.astro'
 ---
 
 <header class="header h-screen">
-    <Navbar />	
-    <slot />
+    <Navbar />
+    <div class="py-6" />
+    <div class="container mx-auto">
+        <h2><a class="font-primary text-black text-3xl hover:underline decoration-black " href="/">The Framer Motion UI Club Blog</a></h2>
+        <div class="py-6" />
+        <Content>
+            <slot />
+        </Content>
+        
+    </div>
+    
 </header>
 
 <style>
