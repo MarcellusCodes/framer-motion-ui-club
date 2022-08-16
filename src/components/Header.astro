@@ -1,0 +1,15 @@
+---
+import Navbar from './Navbar.astro'
+---
+
+<header class="header h-screen">
+    <Navbar />	
+    <slot />
+</header>
+
+<style>
+    .header {
+        clip-path: polygon(0 0, 100% 0%, 100% 60%, 0% 75vh);
+        background: linear-gradient(135deg, #0099ff, #00bbff);
+    }
+</style>
