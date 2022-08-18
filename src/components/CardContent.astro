@@ -1,0 +1,57 @@
+---
+export interface CardContentProps {
+  header?: boolean;
+  image: string;
+  author: string;
+  difficulty: string;
+  created_at: Date;
+  theme?: string;
+}
+
+const {
+  header = false,
+  image,
+  author,
+  difficulty,
+  created_at,
+  theme = false,
+} = Astro.props as CardContentProps;
+---
+
+<div
+  class={`w-[100px] h-[100px] rounded-tl-md rounded-br-md overflow-hidden bg-black p-2 ${
+    header ? "" : "dark:bg-grey dark:bg-opacity-10"
+  }`}
+>
+  <img
+    class={`w-full h-full group-hover:scale-125 ${
+      header ? "" : "group-hover:grayscale-0 grayscale"
+    } duration-300`}
+    src={image}
+  />
+</div>
+
+<ul>
+  <li
+    class={`text-lg text-black  ${
+      theme ? "dark:text-grey dark:group-hover:text-cta-blue" : ""
+    } font-medium`}
+  >
+    {author}
+  </li>
+  <li
+    class={`text-md font-secondary text-black ${
+      theme ? "dark:text-grey dark:group-hover:text-cta-blue" : ""
+    } font-light`}
+  >
+    {difficulty}
+  </li>
+  <div class="py-1"></div>
+  <li
+    class={`text-md font-secondary ${
+      theme ? "dark:text-grey dark:group-hover:text-cta-blue" : ""
+    } font-light`}
+  >
+    {created_at}
+  </li>
+</ul>

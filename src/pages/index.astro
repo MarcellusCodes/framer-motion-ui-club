@@ -1,39 +1,89 @@
 ---
-import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-import Content from '../layouts/Content.astro';
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Content from "../layouts/Content.astro";
+import HeaderTitle from "../components/HeaderTitle.astro";
+import CardContent from "../components/CardContent.astro";
+import Categories from "../components/Categories.astro";
+import Card from "../components/Card.astro";
+const categories = [
+  {
+    id: "1",
+    title: "InView",
+    href: "/category/in-view",
+  },
+  {
+    id: "2",
+    title: "Keyframes",
+    href: "/category/keyframes",
+  },
+];
+const cards = [
+  {
+    href: "/",
+    title: "Keyframes",
+    image: "/assets/margin_prop.png",
+    author: "Marcel Pohl",
+    difficulty: "Easy",
+    created_at: "August 9, 2022",
+    categories: [{ id: "1", title: "Animation", href: "/" }],
+  },
+];
 ---
 
 <Base title="Welcome to Framer Motion UI Club">
-	<Header>
-		<article>
-			<h1 class="font-primary text-6xl text-black font-bold text-clip overflow-hidden">
-				<a class="hover:underline decoration-black leading-1" href="/">how to control viewport animations using the margin prop</a>
-			</h1>
-			<div class="py-6" />
-			<div class="flex flex-row items-start justify-between">
-				<div class="flex flex-row items-start space-x-6">
-					<div class="w-[100px] h-[100px] bg-black rounded-tl-md rounded-br-md" />
-					<ul>
-						<li class="text-lg text-black font-medium">Marcel Pohl</li>
-						<li class="text-md font-secondary text-black font-light">Easy</li>
-						<div class="py-1" />
-						<li class="text-md font-secondary font-light">August 9, 2022</li>
-					</ul>
-				</div>
-				<li class="justify-self-center border group hover:bg-black bg-transparent border-black list-none rounded-md duration-300 inline-flex"> <a class="py-2 px-6 text-md text-black group-hover:text-grey group-hover:underline decoration-grey" href="/">InView</a></li>
-			</div>
-		</article>
-	</Header>
-		<main>
-			<section>
-				<Content>
-					<div class="w-full h-auto bg-red-500 flex flex-col items-start">
-						<article></article>
-					</div>
-					<div />
-					<aside class="w-full h-[300px] bg-green-500"></aside>
-				</Content>
-			</section>
-		</main>
+  <Header>
+    <article>
+      <HeaderTitle
+        href="/"
+        title="how to control viewport animations using the margin prop"
+      />
+      <div class="py-6"></div>
+      <div class="flex flex-row items-start justify-between">
+        <div class="flex flex-row items-start space-x-6">
+          <CardContent
+            image="/assets/margin_prop.png"
+            author="Marcel Pohl"
+            difficulty="Easy"
+            created_at="August 9, 2022"
+            header={true}
+          />
+        </div>
+        <li
+          class="justify-self-center border group hover:bg-black bg-transparent border-black list-none rounded-md duration-300 inline-flex"
+        >
+          <a
+            class="py-2 px-6 text-md text-black group-hover:text-grey group-hover:underline decoration-grey"
+            href="/"
+            >InView
+          </a>
+        </li>
+      </div>
+    </article>
+  </Header>
+  <main>
+    <section>
+      <Content>
+        <div class="w-full h-auto flex flex-col items-start -space-y-[1px]">
+          {
+            cards.map((card) => (
+              <Card
+                href={card.href}
+                title={card.title}
+                image={card.image}
+                author={card.author}
+                difficulty={card.difficulty}
+                created_at={card.created_at}
+                categories={card.categories}
+              />
+            ))
+          }
+        </div>
+        <div></div>
+        <aside class="w-full">
+          <Categories heading={true} theme={true} categories={categories} />
+        </aside>
+      </Content>
+    </section>
+  </main>
 </Base>

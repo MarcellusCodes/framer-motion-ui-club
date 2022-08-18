@@ -1,25 +1,29 @@
 ---
-import Navbar from './Navbar.astro'
-import Content from '../layouts/Content.astro'
+import Navbar from "./Navbar.astro";
+import Content from "../layouts/Content.astro";
 ---
 
 <header class="header h-screen">
-    <Navbar />
-    <div class="py-6" />
-    <div class="container mx-auto">
-        <h2><a class="font-primary text-black text-3xl hover:underline decoration-black " href="/">The Framer Motion UI Club Blog</a></h2>
-        <div class="py-6" />
-        <Content>
-            <slot />
-        </Content>
-        
-    </div>
-    
+  <Navbar />
+  <div class="py-6"></div>
+  <div class="container mx-auto">
+    <h2>
+      <a
+        class="font-primary text-black text-3xl hover:underline decoration-black"
+        href="/"
+        >The Framer Motion UI Club Blog
+      </a>
+    </h2>
+    <div class="py-6"></div>
+    <Content>
+      <slot />
+    </Content>
+  </div>
 </header>
 
 <style>
-    .header {
-        clip-path: polygon(0 0, 100% 0%, 100% 60%, 0% 75vh);
-        background: linear-gradient(135deg, #0099ff, #00bbff);
-    }
+  .header {
+    clip-path: polygon(0 0, 100% 0%, 100% 60%, 0% 75vh);
+    background: linear-gradient(135deg, #0099ff, #00bbff);
+  }
 </style>

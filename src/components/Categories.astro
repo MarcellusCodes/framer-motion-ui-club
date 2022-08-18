@@ -1,0 +1,43 @@
+---
+export interface CategoriesProps {
+  heading: boolean;
+  theme: boolean;
+  categories: {
+    id: string;
+    title: string;
+    href: string;
+  }[];
+}
+
+const { heading, theme, categories } = Astro.props as CategoriesProps;
+---
+
+{
+  heading && (
+    <h4 class="font-primary text-2xl text-black dark:text-grey font-medium">
+      Categories
+    </h4>
+    <div class="py-2" />
+  )
+}
+<ul class="flex flex-col items-start space-y-1">
+  {
+    categories &&
+    categories.map((categorie) => (
+      <li
+        class={`justify-self-center border hover:bg-black hover:border-black bg-transparent group-hover:border-black  border-grey ${
+          theme ? "dark:hover:bg-cta-blue dark:hover:border-cta-blue dark:group-hover:border-cta-blue group" : ""
+        }  list-none rounded-md duration-300 inline-flex`}
+      >
+        <a
+          class={`py-2 px-6 text-md text-black dark:text-grey hover:text-grey ${
+            theme ? " dark:hover:text-black  dark:decoration-black" : ""
+          } hover:underline  decoration-grey`}
+          href={categorie.href}
+        >
+          {categorie.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
