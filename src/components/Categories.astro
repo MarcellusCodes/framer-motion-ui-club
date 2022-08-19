@@ -33,7 +33,7 @@ const { heading, theme, categories } = Astro.props as CategoriesProps;
           class={`py-2 px-6 text-md text-black dark:text-grey hover:text-grey ${
             theme ? " dark:hover:text-black  dark:decoration-black" : ""
           } hover:underline  decoration-grey`}
-          href={categorie.href}
+          href={`/category/${categorie.href}`}
         >
           {categorie.title}
         </a>
