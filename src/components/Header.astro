@@ -1,9 +1,9 @@
 ---
 import Navbar from "./Navbar.astro";
-import Content from "../layouts/Content.astro";
+import Grid from "../layouts/Grid.astro";
 ---
 
-<header class="header h-screen">
+<header class="header h-screen -mb-40">
   <Navbar />
   <div class="py-6"></div>
   <div class="container mx-auto">
@@ -15,9 +15,9 @@ import Content from "../layouts/Content.astro";
       </a>
     </h2>
     <div class="py-6"></div>
-    <Content>
+    <Grid>
       <slot />
-    </Content>
+    </Grid>
   </div>
 </header>
 

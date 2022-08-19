@@ -1,0 +1,71 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Grid from "../../layouts/Grid.astro";
+import HeaderTitle from "../../components/HeaderTitle.astro";
+import CardContent from "../../components/CardContent.astro";
+import Categories from "../../components/Categories.astro";
+import CategorieList from "../../constants/CategorieList";
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob("../../posts/*.mdx");
+
+  const filterCategories = posts.map((post) => ({
+    categories: CategorieList.map((categorie) => {
+      if (post.frontmatter.categories.includes(categorie.title)) {
+        return { ...categorie };
+      }
+    }),
+  }));
+
+  const postsData = posts.map((post) => ({
+    params: {
+      title: post.frontmatter.href,
+    },
+    props: {
+      post,
+      filterCategories,
+    },
+  }));
+
+  return postsData;
+}
+
+const data = Astro.props;
+---
+
+<Base title="Welcome to MarcellusCodes web dev Club">
+  <Header>
+    <HeaderTitle
+      href={data.post.frontmatter.href}
+      title={data.post.frontmatter.title}
+    />
+    <div></div>
+    <div class="flex flex-row items-start space-x-6">
+      <CardContent
+        image={data.post.frontmatter.image}
+        author={data.post.frontmatter.author}
+        difficulty={data.post.frontmatter.difficulty}
+        created_at={data.post.frontmatter.created_at}
+        header={true}
+      />
+    </div>
+  </Header>
+  <main>
+    <section>
+      <Grid>
+        <div class="w-full h-auto">
+          {<data.post.Content />}
+        </div>
+        <div></div>
+        <aside class="w-full">
+          <Categories
+            heading={true}
+            theme={true}
+            categories={data.filterCategories[0].categories}
+          />
+        </aside>
+      </Grid>
+    </section>
+  </main>
+</Base>

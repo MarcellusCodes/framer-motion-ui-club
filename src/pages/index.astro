@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
-import Content from "../layouts/Content.astro";
+import Grid from "../layouts/Grid.astro";
 import HeaderTitle from "../components/HeaderTitle.astro";
 import CardContent from "../components/CardContent.astro";
 import Categories from "../components/Categories.astro";
@@ -63,7 +63,7 @@ const cards = [
   </Header>
   <main>
     <section>
-      <Content>
+      <Grid>
         <div class="w-full h-auto flex flex-col items-start -space-y-[1px]">
           {
             cards.map((card) => (
@@ -83,7 +83,7 @@ const cards = [
         <aside class="w-full">
           <Categories heading={true} theme={true} categories={categories} />
         </aside>
-      </Content>
+      </Grid>
     </section>
   </main>
 </Base>
