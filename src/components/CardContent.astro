@@ -52,6 +52,12 @@ const {
       theme ? "dark:text-grey dark:group-hover:text-cta-blue" : ""
     } font-light`}
   >
-    {created_at}
+    {
+      new Date(created_at).toLocaleDateString("en-EN", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    }
   </li>
 </ul>
