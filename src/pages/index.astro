@@ -7,37 +7,40 @@ import CardContent from "../components/CardContent.astro";
 import Categories from "../components/Categories.astro";
 import Card from "../components/Card.astro";
 import categorieList from "../constants/CategorieList";
+import filterCategories from "../utils/FilterCategories";
+import sortByDate from "../utils/SortByDate";
+import PostProps from "../constants/interfaces/PostProps";
 
 const posts = await Astro.glob("../posts/*.mdx");
+const sortedPosts = sortByDate(posts);
+console.log(sortedPosts);
+const firstPost = posts[0].frontmatter;
+const firstPostCategories = filterCategories(
+  firstPost.categories,
+  categorieList
+);
 ---
 
 <Base title="Welcome to MarcellusCodes web dev Club">
   <Header>
     <article>
-      <HeaderTitle
-        href="/"
-        title="how to control viewport animations using the margin prop"
-      />
+      <HeaderTitle href={`/posts/${firstPost.href}`} title={firstPost.title} />
       <div class="py-6"></div>
       <div class="flex flex-row items-start justify-between">
         <div class="flex flex-row items-start space-x-6">
           <CardContent
-            image="/assets/margin_prop.png"
-            author="Marcel Pohl"
-            difficulty="Easy"
-            created_at="August 9, 2022"
+            image={`${firstPost.image}`}
+            author={firstPost.author}
+            difficulty={firstPost.difficulty}
+            created_at={firstPost.created_at}
             header={true}
           />
         </div>
-        <li
-          class="justify-self-center border group hover:bg-black bg-transparent border-black list-none rounded-md duration-300 inline-flex"
-        >
-          <a
-            class="py-2 px-6 text-md text-black group-hover:text-grey group-hover:underline decoration-grey"
-            href="/"
-            >InView
-          </a>
-        </li>
+        <Categories
+          heading={false}
+          theme={false}
+          categories={firstPostCategories}
+        />
       </div>
     </article>
   </Header>
@@ -46,17 +49,19 @@ const posts = await Astro.glob("../posts/*.mdx");
       <Grid>
         <div class="w-full h-auto flex flex-col items-start -space-y-[1px]">
           {
-            posts.map((post) => (
-              <Card
-                href={post.frontmatter.href}
-                title={post.frontmatter.title}
-                image={post.frontmatter.image}
-                author={post.frontmatter.author}
-                difficulty={post.frontmatter.difficulty}
-                created_at={post.frontmatter.created_at}
-                categories={post.frontmatter.categories}
-              />
-            ))
+            sortedPosts
+              .slice(1)
+              .map((post: PostProps) => (
+                <Card
+                  href={post.frontmatter.href}
+                  title={post.frontmatter.title}
+                  image={post.frontmatter.image}
+                  author={post.frontmatter.author}
+                  difficulty={post.frontmatter.difficulty}
+                  created_at={post.frontmatter.created_at}
+                  categories={post.frontmatter.categories}
+                />
+              ))
           }
         </div>
         <div></div>
