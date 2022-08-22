@@ -1,0 +1,70 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Grid from "../../layouts/Grid.astro";
+import HeaderTitle from "../../components/HeaderTitle.astro";
+import CardContent from "../../components/CardContent.astro";
+import Categories from "../../components/Categories.astro";
+import Card from "../../components/Card.astro";
+import categorieList from "../../constants/CategorieList";
+import filterCategories from "../../utils/FilterCategories";
+import PostProps from "../../constants/interfaces/PostProps";
+import filterPosts from "../../utils/FilterPosts";
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob("../../posts/*.mdx");
+
+  const categorieData = categorieList.map((categorie) => ({
+    params: {
+      title: categorie.href,
+    },
+    props: {
+      categorie,
+      posts: filterPosts(posts, categorie.title),
+    },
+  }));
+
+  return categorieData;
+}
+
+const data = Astro.props;
+console.log(data);
+---
+
+<Base title="Welcome to MarcellusCodes web dev Club">
+  <Header>
+    <HeaderTitle
+      href={`/category/${data.categorie.href}`}
+      title={data.categorie.title}
+    />
+  </Header>
+  <main>
+    <section>
+      <Grid>
+        <div class="w-full h-auto flex flex-col items-start -space-y-[1px]">
+          {
+            data.posts.map((post: PostProps) => (
+              <Card
+                href={post.frontmatter.href}
+                title={post.frontmatter.title}
+                image={post.frontmatter.image}
+                author={post.frontmatter.author}
+                difficulty={post.frontmatter.difficulty}
+                created_at={post.frontmatter.created_at}
+                categories={post.frontmatter.categories}
+              />
+            ))
+          }
+        </div>
+        <div></div>
+        <aside class="w-full">
+          <Categories
+            heading={true}
+            theme={true}
+            categories={data.categorieList}
+          />
+        </aside>
+      </Grid>
+    </section>
+  </main>
+</Base>

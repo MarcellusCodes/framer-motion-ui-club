@@ -9,7 +9,7 @@ const { href, title } = Astro.props as HeaderTitleProps;
 ---
 
 <h1
-  class="font-primary text-6xl text-black font-bold text-clip overflow-hidden"
+  class="font-primary text-4xl sm:text-5xl lg:text-6xl text-black font-bold text-clip overflow-hidden"
 >
   <a class="hover:underline decoration-black leading-1" href={href}>{title}</a>
 </h1>

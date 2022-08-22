@@ -1,4 +1,5 @@
 ---
+import { Image } from "@astrojs/image/components";
 export interface CardContentProps {
   header?: boolean;
   image: string;
@@ -23,17 +24,18 @@ const {
     header ? "" : "dark:bg-grey dark:bg-opacity-10"
   }`}
 >
-  <img
-    class={`w-full h-full group-hover:scale-125 ${
+  <div
+    class={` group-hover:scale-125 ${
       header ? "" : "group-hover:grayscale-0 grayscale"
     } duration-300`}
-    src={image}
-  />
+  >
+    <Image src={import(`../assets/images/${image}`)} width={128} height={128} />
+  </div>
 </div>
 
 <ul>
   <li
-    class={`text-lg text-black  ${
+    class={`text-lg text-black ${
       theme ? "dark:text-grey dark:group-hover:text-cta-blue" : ""
     } font-medium`}
   >

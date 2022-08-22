@@ -22,11 +22,11 @@ const firstPostCategories = filterCategories(
 ---
 
 <Base title="Welcome to MarcellusCodes web dev Club">
-  <Header>
+  <Header index={true}>
     <article>
       <HeaderTitle href={`/posts/${firstPost.href}`} title={firstPost.title} />
       <div class="py-6"></div>
-      <div class="flex flex-row items-start justify-between">
+      <div class="flex flex-col md:flex-row items-start justify-between">
         <div class="flex flex-row items-start space-x-6">
           <CardContent
             image={`${firstPost.image}`}
@@ -36,6 +36,7 @@ const firstPostCategories = filterCategories(
             header={true}
           />
         </div>
+        <div class="py-6 md:py-0"></div>
         <Categories
           heading={false}
           theme={false}
@@ -48,6 +49,15 @@ const firstPostCategories = filterCategories(
     <section>
       <Grid>
         <div class="w-full h-auto flex flex-col items-start -space-y-[1px]">
+          <aside class="block md:hidden w-full">
+            <Categories
+              heading={true}
+              theme={true}
+              categories={categorieList}
+              aside={true}
+            />
+            <div class="py-6"></div>
+          </aside>
           {
             sortedPosts
               .slice(1)
@@ -64,8 +74,8 @@ const firstPostCategories = filterCategories(
               ))
           }
         </div>
-        <div></div>
-        <aside class="w-full">
+        <div class="hidden md:flex"></div>
+        <aside class="hidden md:block w-full">
           <Categories heading={true} theme={true} categories={categorieList} />
         </aside>
       </Grid>
