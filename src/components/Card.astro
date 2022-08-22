@@ -1,6 +1,9 @@
 ---
 import CardContent from "./CardContent.astro";
 import Categories from "./Categories.astro";
+import filterCategories from "../utils/FilterCategories";
+import categorieList from "../constants/CategorieList";
+
 export interface CardProps {
   href: string;
   title: string;
@@ -8,15 +11,13 @@ export interface CardProps {
   author: string;
   difficulty: string;
   created_at: string;
-  categories: {
-    id: string;
-    title: string;
-    href: string;
-  }[];
+  categories: string[];
 }
 
 const { href, title, image, author, difficulty, created_at, categories } =
   Astro.props as CardProps;
+
+const formattedCategories = filterCategories(categories, categorieList);
 ---
 
 <article
@@ -40,6 +41,6 @@ const { href, title, image, author, difficulty, created_at, categories } =
         theme={true}
       />
     </div>
-    <Categories heading={false} theme={true} categories={categories} />
+    <Categories heading={false} theme={true} categories={formattedCategories} />
   </div>
 </article>

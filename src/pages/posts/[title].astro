@@ -5,18 +5,13 @@ import Grid from "../../layouts/Grid.astro";
 import HeaderTitle from "../../components/HeaderTitle.astro";
 import CardContent from "../../components/CardContent.astro";
 import Categories from "../../components/Categories.astro";
-import CategorieList from "../../constants/CategorieList";
+import categorieList from "../../constants/CategorieList";
+import filterCategories from "../../utils/FilterCategories";
+import PostProps from "../../constants/interfaces/PostProps";
 
 export async function getStaticPaths() {
   const posts = await Astro.glob("../../posts/*.mdx");
-
-  const filterCategories = posts.map((post) => ({
-    categories: CategorieList.map((categorie) => {
-      if (post.frontmatter.categories.includes(categorie.title)) {
-        return { ...categorie };
-      }
-    }),
-  }));
+  console.log(posts);
 
   const postsData = posts.map((post) => ({
     params: {
@@ -24,7 +19,7 @@ export async function getStaticPaths() {
     },
     props: {
       post,
-      filterCategories,
+      categories: filterCategories(post.frontmatter.categories, categorieList),
     },
   }));
 
@@ -59,10 +54,7 @@ const data = Astro.props;
         </div>
         <div></div>
         <aside class="w-full">
-          <Categories
-            heading={true}
-            theme={true}
-            categories={data.filterCategories[0].categories}
+          <Categories heading={true} theme={true} categories={data.categories}
           />
         </aside>
       </Grid>

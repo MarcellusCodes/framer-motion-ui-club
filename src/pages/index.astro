@@ -6,29 +6,9 @@ import HeaderTitle from "../components/HeaderTitle.astro";
 import CardContent from "../components/CardContent.astro";
 import Categories from "../components/Categories.astro";
 import Card from "../components/Card.astro";
-const categories = [
-  {
-    id: "1",
-    title: "InView",
-    href: "/category/in-view",
-  },
-  {
-    id: "2",
-    title: "Keyframes",
-    href: "/category/keyframes",
-  },
-];
-const cards = [
-  {
-    href: "/",
-    title: "Keyframes",
-    image: "/assets/margin_prop.png",
-    author: "Marcel Pohl",
-    difficulty: "Easy",
-    created_at: "August 9, 2022",
-    categories: [{ id: "1", title: "Animation", href: "/" }],
-  },
-];
+import categorieList from "../constants/CategorieList";
+
+const posts = await Astro.glob("../posts/*.mdx");
 ---
 
 <Base title="Welcome to MarcellusCodes web dev Club">
@@ -66,22 +46,22 @@ const cards = [
       <Grid>
         <div class="w-full h-auto flex flex-col items-start -space-y-[1px]">
           {
-            cards.map((card) => (
+            posts.map((post) => (
               <Card
-                href={card.href}
-                title={card.title}
-                image={card.image}
-                author={card.author}
-                difficulty={card.difficulty}
-                created_at={card.created_at}
-                categories={card.categories}
+                href={post.frontmatter.href}
+                title={post.frontmatter.title}
+                image={post.frontmatter.image}
+                author={post.frontmatter.author}
+                difficulty={post.frontmatter.difficulty}
+                created_at={post.frontmatter.created_at}
+                categories={post.frontmatter.categories}
               />
             ))
           }
         </div>
         <div></div>
         <aside class="w-full">
-          <Categories heading={true} theme={true} categories={categories} />
+          <Categories heading={true} theme={true} categories={categorieList} />
         </aside>
       </Grid>
     </section>
