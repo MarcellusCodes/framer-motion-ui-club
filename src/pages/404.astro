@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Grid from "../layouts/Grid.astro";
+import HeaderTitle from "../components/HeaderTitle.astro";
+import CardContent from "../components/CardContent.astro";
+import Categories from "../components/Categories.astro";
+import Card from "../components/Card.astro";
+import categorieList from "../constants/CategorieList";
+import filterCategories from "../utils/FilterCategories";
+import sortByDate from "../utils/SortByDate";
+import PostProps from "../constants/interfaces/PostProps";
+---
+
+<Base title="Welcome to MarcellusCodes web dev Club">
+  <Header>
+    <div>
+      <HeaderTitle href={`/`} title={"Sorry, page not found!"} />
+      <div class="py-6"></div>
+      <span
+        class="text-[5rem] sm:text-[10rem] md:text-[15rem] text-black font-bold font-primary"
+        >404
+      </span>
+    </div>
+  </Header>
+</Base>
