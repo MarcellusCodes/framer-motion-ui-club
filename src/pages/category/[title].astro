@@ -30,7 +30,10 @@ export async function getStaticPaths() {
 const data = Astro.props;
 ---
 
-<Base title="Welcome to MarcellusCodes web dev Club">
+<Base
+  content={`Marcellus web dev club teaches you all about ${data.categorie.title}`}
+  title={`MarcellusCodes web dev club category ${data.categorie.title}`}
+>
   <Header>
     <HeaderTitle
       href={`/category/${data.categorie.href}`}
@@ -61,7 +64,7 @@ const data = Astro.props;
                 created_at={post.frontmatter.created_at}
                 categories={post.frontmatter.categories}
               />
-            ))
+            ));
           }
         </div>
         <div></div>

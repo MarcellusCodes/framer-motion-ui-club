@@ -33,6 +33,7 @@ const {
       src={import(`../assets/images/${image}.png`)}
       width={128}
       height={128}
+      alt={image}
     />
   </div>
 </div>
@@ -52,9 +53,8 @@ const {
   >
     {difficulty}
   </li>
-  <div class="py-1"></div>
   <li
-    class={`text-md font-secondary ${
+    class={`text-md font-secondary mt-2 ${
       theme ? "dark:text-grey dark:group-hover:text-cta-blue" : ""
     } font-light`}
   >

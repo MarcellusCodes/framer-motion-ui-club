@@ -28,7 +28,7 @@ export async function getStaticPaths() {
 const data = Astro.props;
 ---
 
-<Base title="Welcome to MarcellusCodes web dev Club">
+<Base content={data.post.frontmatter.title} title={data.post.frontmatter.title}>
   <Header>
     <div class="space-y-12 md:space-y-0">
       <HeaderTitle
@@ -74,7 +74,7 @@ const data = Astro.props;
         </div>
 
         <div></div>
-        <aside class="hidden md:block w-full ">
+        <aside class="hidden md:block w-full">
           <Categories heading={true} theme={true} categories={data.categories}
           />
         </aside>

@@ -52,7 +52,7 @@ const ThemeButton: React.FC = () => {
 
   return (
     <>
-      <button onClick={setDarkmode}>
+      <button aria-label="Switch Theme" onClick={setDarkmode}>
         <AnimatePresence initial={false} exitBeforeEnter>
           {theme === false ? (
             <motion.svg

@@ -13,7 +13,6 @@ import PostProps from "../constants/interfaces/PostProps";
 
 const posts = await Astro.glob("../posts/*.mdx");
 const sortedPosts = sortByDate(posts);
-console.log(sortedPosts);
 const firstPost = posts[0].frontmatter;
 const firstPostCategories = filterCategories(
   firstPost.categories,
@@ -21,7 +20,7 @@ const firstPostCategories = filterCategories(
 );
 ---
 
-<Base title="Welcome to MarcellusCodes web dev Club">
+<Base content={"MarcellusCodes web dev club learn from various technologies like headless cms systems, react, nextjs, animations, framer motion and alot more"} title="Welcome to MarcellusCodes web dev Club">
   <Header index={true}>
     <article>
       <HeaderTitle href={`/posts/${firstPost.href}`} title={firstPost.title} />
