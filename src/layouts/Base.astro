@@ -19,7 +19,9 @@ const { content, title } = Astro.props as BaseProps;
     <meta name="description" content={content} />
     <title>{title}</title>
   </head>
-  <body class="bg-white dark:bg-black duration-300 pb-20 overflow-x-hidden">
+  <body
+    class="bg-white dark:bg-black duration-300 transition-colors pb-20 overflow-x-hidden"
+  >
     <slot />
   </body>
 </html>

@@ -7,7 +7,6 @@ import CardContent from "../../components/CardContent.astro";
 import Categories from "../../components/Categories.astro";
 import categorieList from "../../constants/CategorieList";
 import filterCategories from "../../utils/FilterCategories";
-import PostProps from "../../constants/interfaces/PostProps";
 
 export async function getStaticPaths() {
   const posts = await Astro.glob("../../posts/*.mdx");

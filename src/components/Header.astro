@@ -9,10 +9,10 @@ export interface HeaderProps {
 const { index = false } = Astro.props as HeaderProps;
 ---
 
-<header class="header h-screen -mb-40">
+<header class="header h-auto pb-12 mb-12">
   <Navbar />
   <div class="py-6"></div>
-  <div class="container mx-auto">
+  <div class="container mx-auto pb-20 md:pb-0">
     {
       index ? (
         <h2 class="px-4 md:px-0">
@@ -58,7 +58,7 @@ const { index = false } = Astro.props as HeaderProps;
 
 <style>
   .header {
-    clip-path: polygon(0 0, 100% 0%, 100% 60%, 0% 75vh);
     background: linear-gradient(135deg, #0099ff, #00bbff);
+    clip-path: polygon(0px 0px, 100% 0px, 100% 80%, 0% 100%);
   }
 </style>

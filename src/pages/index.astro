@@ -28,7 +28,7 @@ const firstPostCategories = filterCategories(
     <article>
       <HeaderTitle href={`/posts/${firstPost.href}`} title={firstPost.title} />
       <div class="py-6"></div>
-      <div class="flex flex-col md:flex-row items-start justify-between">
+      <div class="flex flex-col md:flex-row items-start justify-between pb-6">
         <div class="flex flex-row items-start space-x-6">
           <CardContent
             image={`${firstPost.image}`}
@@ -59,7 +59,7 @@ const firstPostCategories = filterCategories(
               aside={true}
             />
           </aside>
-          <div class="py-6"></div>
+          <div class="py-6 md:py-0"></div>
           {
             sortedPosts
               .slice(1)

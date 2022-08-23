@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MoonMotion = {
@@ -37,24 +37,26 @@ const ThemeButtonTransition = {
 };
 
 const ThemeButton: React.FC = () => {
-  const [theme, setTheme] = useState(false);
-  const setDarkmode = () => {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-      setTheme(false);
-    } else {
-      document.documentElement.classList.remove("light");
-      document.documentElement.classList.add("dark");
-      setTheme(true);
-    }
-  };
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
+  const colorTheme = theme === "dark" ? "light" : "dark";
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove(colorTheme);
+    root.classList.add(theme);
+    localStorage.setItem("theme", theme);
+  }, [theme, colorTheme]);
 
   return (
     <>
-      <button aria-label="Switch Theme" onClick={setDarkmode}>
+      <button
+        aria-label="Switch Theme"
+        onClick={() => {
+          setTheme(colorTheme);
+        }}
+      >
         <AnimatePresence initial={false} exitBeforeEnter>
-          {theme === false ? (
+          {theme === "dark" ? (
             <motion.svg
               key="dark"
               variants={MoonMotion}
