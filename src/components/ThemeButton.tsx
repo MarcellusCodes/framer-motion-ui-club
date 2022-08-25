@@ -37,24 +37,36 @@ const ThemeButtonTransition = {
 };
 
 const ThemeButton: React.FC = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme"));
-  const colorTheme = theme === "dark" ? "light" : "dark";
+  const [theme, setTheme] = useState(
+    typeof window !== "undefined" ? localStorage.getItem("theme") : "light"
+  );
+  const [isMounted, setIsMounted] = useState(false);
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove(colorTheme);
-    root.classList.add(theme);
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
     localStorage.setItem("theme", theme);
-  }, [theme, colorTheme]);
+  }, [theme]);
+
+  //Prevent ThemeButton to load before localStorage is available
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
-      <button
-        aria-label="Switch Theme"
-        onClick={() => {
-          setTheme(colorTheme);
-        }}
-      >
+      <button aria-label="Switch Theme" onClick={toggleTheme}>
         <AnimatePresence initial={false} exitBeforeEnter>
           {theme === "dark" ? (
             <motion.svg

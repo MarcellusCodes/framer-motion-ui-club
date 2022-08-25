@@ -23,15 +23,15 @@ const formattedCategories = filterCategories(categories, categorieList);
 <article
   class="w-full max-w-[660px] py-10 group relative hover:before:scale-x-110 hover:before:h-[3px] hover:before:z-50 before:content-[''] before:absolute before:w-full before:h-[1px] before:top-0 before:left-0 before:bg-black before:dark:bg-grey before:dark:hover:bg-cta-blue hover:after:scale-x-110 hover:after:h-[3px] hover:after:z-50 before:duration-300 after:bg-black after:dark:bg-grey after:dark:hover:bg-cta-blue after:content-[''] after:absolute after:w-full after:h-[1px] after:bottom-0 after:left-0 after:duration-300"
 >
-  <h1
+  <h2
     class="font-primary text-2xl text-black dark:text-grey dark:group-hover:text-cta-blue font-bold overflow-hidden"
   >
     <a
-      class="hover:underline decoration-black leading-1"
+      class="hover:underline dark:hover:decoration-cta-blue decoration-black leading-1"
       href={`/posts/${href}`}
       >{title}
     </a>
-  </h1>
+  </h2>
   <div class="py-4"></div>
   <div
     class="flex flex-col sm:flex-row items-start justify-between space-y-8 sm:space-y-0"
