@@ -20,6 +20,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@astrojs/prism": "^1.0.1",
     "@fontsource/amiko": "^4.5.9",
     "@fontsource/tajawal": "^4.5.9",
     "framer-motion": "^7.1.1"

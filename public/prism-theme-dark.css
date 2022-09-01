@@ -1,0 +1,277 @@
+html.dark pre[class*="language-"],
+html.dark code[class*="language-"] {
+  color: #d4d4d4;
+  font-size: 13px;
+  text-shadow: none;
+  font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono",
+    "Courier New", monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  border-radius: 0.375rem;
+}
+
+html.dark pre[class*="language-"]::selection,
+html.dark code[class*="language-"]::selection,
+html.dark pre[class*="language-"] *::selection,
+html.dark code[class*="language-"] *::selection {
+  text-shadow: none;
+  background: #264f78;
+}
+
+@media print {
+  html.dark pre[class*="language-"],
+  html.dark code[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+html.dark pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  background: #353639;
+}
+
+:not(pre) > html.dark code[class*="language-"] {
+  padding: 0.1em 0.3em;
+  border-radius: 0.3em;
+  color: #db4c69;
+  background: #353639;
+}
+/*********************************************************
+* Tokens
+*/
+html.dark .namespace {
+  opacity: 0.7;
+}
+
+html.dark .token.doctype .token.doctype-tag {
+  color: #569cd6;
+}
+
+html.dark .token.doctype .token.name {
+  color: #9cdcfe;
+}
+
+html.dark .token.comment,
+html.dark .token.prolog {
+  color: #6a9955;
+}
+
+html.dark .token.punctuation,
+html.dark .language-html .language-css .token.punctuation,
+html.dark .language-html .language-javascript .token.punctuation {
+  color: #d4d4d4;
+}
+
+html.dark .token.property,
+html.dark .token.tag,
+html.dark .token.boolean,
+html.dark .token.number,
+html.dark .token.constant,
+html.dark .token.symbol,
+html.dark .token.inserted,
+html.dark .token.unit {
+  color: #b5cea8;
+}
+
+html.dark .token.selector,
+html.dark .token.attr-name,
+html.dark .token.string,
+html.dark .token.char,
+html.dark .token.builtin,
+html.dark .token.deleted {
+  color: #ce9178;
+}
+
+html.dark .language-css .token.string.url {
+  text-decoration: underline;
+}
+
+html.dark .token.operator,
+html.dark .token.entity {
+  color: #d4d4d4;
+}
+
+html.dark .token.operator.arrow {
+  color: #569cd6;
+}
+
+html.dark .token.atrule {
+  color: #ce9178;
+}
+
+html.dark .token.atrule .token.rule {
+  color: #c586c0;
+}
+
+html.dark .token.atrule .token.url {
+  color: #9cdcfe;
+}
+
+html.dark .token.atrule .token.url .token.function {
+  color: #dcdcaa;
+}
+
+html.dark .token.atrule .token.url .token.punctuation {
+  color: #d4d4d4;
+}
+
+html.dark .token.keyword {
+  color: #569cd6;
+}
+
+html.dark .token.keyword.module,
+html.dark .token.keyword.control-flow {
+  color: #c586c0;
+}
+
+html.dark .token.function,
+html.dark .token.function .token.maybe-class-name {
+  color: #dcdcaa;
+}
+
+html.dark .token.regex {
+  color: #d16969;
+}
+
+html.dark .token.important {
+  color: #569cd6;
+}
+
+html.dark .token.italic {
+  font-style: italic;
+}
+
+html.dark .token.constant {
+  color: #9cdcfe;
+}
+
+html.dark .token.class-name,
+html.dark .token.maybe-class-name {
+  color: #4ec9b0;
+}
+
+html.dark .token.console {
+  color: #9cdcfe;
+}
+
+html.dark .token.parameter {
+  color: #9cdcfe;
+}
+
+html.dark .token.interpolation {
+  color: #9cdcfe;
+}
+
+html.dark .token.punctuation.interpolation-punctuation {
+  color: #569cd6;
+}
+
+html.dark .token.boolean {
+  color: #569cd6;
+}
+
+html.dark .token.property,
+html.dark .token.variable,
+html.dark .token.imports .token.maybe-class-name,
+html.dark .token.exports .token.maybe-class-name {
+  color: #9cdcfe;
+}
+
+html.dark .token.selector {
+  color: #d7ba7d;
+}
+
+html.dark .token.escape {
+  color: #d7ba7d;
+}
+
+html.dark .token.tag {
+  color: #569cd6;
+}
+
+html.dark .token.tag .token.punctuation {
+  color: #808080;
+}
+
+html.dark .token.cdata {
+  color: #808080;
+}
+
+html.dark .token.attr-name {
+  color: #9cdcfe;
+}
+
+html.dark .token.attr-value,
+html.dark .token.attr-value .token.punctuation {
+  color: #ce9178;
+}
+
+html.dark .token.attr-value .token.punctuation.attr-equals {
+  color: #d4d4d4;
+}
+
+html.dark .token.entity {
+  color: #569cd6;
+}
+
+html.dark .token.namespace {
+  color: #4ec9b0;
+}
+/*********************************************************
+* Language Specific
+*/
+
+html.dark pre[class*="language-javascript"],
+html.dark code[class*="language-javascript"],
+html.dark pre[class*="language-jsx"],
+html.dark code[class*="language-jsx"],
+html.dark pre[class*="language-typescript"],
+html.dark code[class*="language-typescript"],
+html.dark pre[class*="language-tsx"],
+html.dark code[class*="language-tsx"] {
+  color: #9cdcfe;
+}
+
+html.dark pre[class*="language-css"],
+html.dark code[class*="language-css"] {
+  color: #ce9178;
+}
+
+html.dark pre[class*="language-html"],
+html.dark code[class*="language-html"] {
+  color: #d4d4d4;
+}
+
+html.dark .language-regex .token.anchor {
+  color: #dcdcaa;
+}
+
+html.dark .language-html .token.punctuation {
+  color: #808080;
+}
+/*********************************************************
+* Line highlighting
+*/
+html.dark pre[class*="language-"] > code[class*="language-"] {
+  position: relative;
+  z-index: 1;
+}
+
+html.dark .line-highlight.line-highlight {
+  background: #f7ebc6;
+  box-shadow: inset 5px 0 0 #f7d87c;
+  z-index: 0;
+}
