@@ -21,8 +21,8 @@ export async function getStaticPaths() {
     },
   }));
 
-  return postsData;         
-} 
+  return postsData;
+}
 
 const data = Astro.props;
 ---
@@ -40,6 +40,7 @@ const data = Astro.props;
           image={data.post.frontmatter.image}
           author={data.post.frontmatter.author}
           difficulty={data.post.frontmatter.difficulty}
+          minutesRead={data.post.frontmatter.minutesRead}
           created_at={data.post.frontmatter.created_at}
           header={true}
         />
@@ -51,6 +52,7 @@ const data = Astro.props;
         image={data.post.frontmatter.image}
         author={data.post.frontmatter.author}
         difficulty={data.post.frontmatter.difficulty}
+        minutesRead={data.post.frontmatter.minutesRead}
         created_at={data.post.frontmatter.created_at}
         header={true}
       />

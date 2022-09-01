@@ -14,6 +14,7 @@ import PostProps from "../constants/interfaces/PostProps";
 const posts = await Astro.glob("../posts/*.mdx");
 const sortedPosts = sortByDate(posts);
 const firstPost = posts[0].frontmatter;
+console.log(posts[0].frontmatter);
 const firstPostCategories = filterCategories(
   firstPost.categories,
   categorieList
@@ -34,6 +35,7 @@ const firstPostCategories = filterCategories(
             image={`${firstPost.image}`}
             author={firstPost.author}
             difficulty={firstPost.difficulty}
+            minutesRead={firstPost.minutesRead}
             created_at={firstPost.created_at}
             header={true}
           />
@@ -70,6 +72,7 @@ const firstPostCategories = filterCategories(
                   image={post.frontmatter.image}
                   author={post.frontmatter.author}
                   difficulty={post.frontmatter.difficulty}
+                  minutesRead={post.frontmatter.minutesRead}
                   created_at={post.frontmatter.created_at}
                   categories={post.frontmatter.categories}
                 />
@@ -84,4 +87,3 @@ const firstPostCategories = filterCategories(
     </section>
   </main>
 </Base>
-

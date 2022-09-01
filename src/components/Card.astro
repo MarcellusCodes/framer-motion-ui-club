@@ -10,12 +10,21 @@ export interface CardProps {
   image: string;
   author: string;
   difficulty: string;
+  minutesRead: string;
   created_at: string;
   categories: string[];
 }
 
-const { href, title, image, author, difficulty, created_at, categories } =
-  Astro.props as CardProps;
+const {
+  href,
+  title,
+  image,
+  author,
+  difficulty,
+  minutesRead,
+  created_at,
+  categories,
+} = Astro.props as CardProps;
 
 const formattedCategories = filterCategories(categories, categorieList);
 ---
@@ -41,6 +50,7 @@ const formattedCategories = filterCategories(categories, categorieList);
         image={image}
         author={author}
         difficulty={difficulty}
+        minutesRead={minutesRead}
         created_at={created_at}
         theme={true}
       />

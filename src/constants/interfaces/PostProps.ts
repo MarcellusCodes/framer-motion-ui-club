@@ -5,6 +5,7 @@ export default interface PostProps {
     image: string;
     author: string;
     difficulty: string;
+    minutesRead:string;
     created_at: string;
     categories: string[];
   };

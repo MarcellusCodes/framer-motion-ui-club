@@ -5,6 +5,7 @@ export interface CardContentProps {
   image: string;
   author: string;
   difficulty: string;
+  minutesRead: string;
   created_at: Date;
   theme?: string;
 }
@@ -14,6 +15,7 @@ const {
   image,
   author,
   difficulty,
+  minutesRead,
   created_at,
   theme = false,
 } = Astro.props as CardContentProps;
@@ -52,6 +54,13 @@ const {
     } font-light`}
   >
     {difficulty}
+  </li>
+  <li
+    class={`text-md font-secondary text-black ${
+      theme ? "dark:text-grey dark:group-hover:text-cta-blue" : ""
+    } font-light`}
+  >
+    {minutesRead}
   </li>
   <li
     class={`text-md font-secondary mt-2 ${
